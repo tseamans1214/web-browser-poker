@@ -2,23 +2,66 @@
 <html lang="en">
 	<head>
     	<meta charset="utf-8">
-    	<meta name="description" content="Your description goes here">
+    	<meta name="description" content="Free Web Browser Poker Game">
     	<meta name="keywords" content="one, two, three">
 
-		<title>Blank Template</title>
+		<title>Web Browser Poker</title>
 
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<header></header>
-		<section></section>
-		<section></section>
-		<section></section>
-		<section class="bigBottom"></section>
-		<section class="bigBottom"></section>
-		<footer></footer>
+		<main>
+			<!-- Game Section -->
+			<section id="sec-table">
+				<!-- Table Cards Section -->
+				<section id="sec-table-cards">
+					<img id="table-c1" src="#">
+					<img id="table-c2" src="#">
+					<img id="table-c3" src="#">
+					<img id="table-c4" src="#">
+					<img id="table-c5" src="#">
+				</section>
+				<h2 id="pot">Pot:</h2>
+				<h3 id="ante">Ante:</h3>
+				<h3 id="round-bet">Round Bet:</h3>
+			</section>
+			<!-- Players Section -->
+			<section id="sec-players">
+				<!-- Player 1 -->
+				<section id="sec-p1" class="player">
+					<h2 id="p1-name">Player 1</h2>
+					<h3 id="p1-money">Money: $100</h3>
+					<!-- P1 Cards -->
+					<section id="sec-p1-cards" class="p-cards">
+						<img id="p1-c1" src="#">
+						<img id="p1-c2" src="#">
+					</section>
+					<section id="p1-options">
+						<label for="p1-amount">$</label>
+						<input type="number" id="p1-amount" name="p1-amount">
+						</br>
+						<input class="option" type="button" value="Call">
+						<input class="option" type="button" value="Bet">
+						<input class="option" type="button" value="Raise">
+						<input class="option" type="button" value="Fold">
+					</section>
+				</section>
+				<!-- Player 2 -->
+				<section id="sec-p2" class="player">
+					<h2 id="p2-name">Player 2</h2>
+					<h3 id="p2-money">Money: $100</h3>
+					<!-- P2 Cards -->
+					<section id="sec-p2-cards" class="p-cards">
+						<img id="p2-c1" src="#">
+						<img id="p2-c2" src="#">
+					</section>
+				</section>
+			</section>
+			<!-- Game Log Section -->
+			<section id="sec-game-log"></section>
+		</main>
 
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
