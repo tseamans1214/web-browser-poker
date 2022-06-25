@@ -23,35 +23,42 @@
 					<img id="table-c4" src="#">
 					<img id="table-c5" src="#">
 				</section>
-				<h2 id="pot">Pot:</h2>
-				<h3 id="ante">Ante:</h3>
-				<h3 id="round-bet">Round Bet:</h3>
+				<section class="game-info">
+					<h1 id="pot">Pot:</h1>
+					<h1 id="ante">Ante:</h1>
+					<h1 id="round-bet">Round Bet:</h1>
+				</section>
 			</section>
 			<!-- Players Section -->
 			<section id="sec-players">
 				<!-- Player 1 -->
 				<section id="sec-p1" class="player">
-					<h2 id="p1-name">Player 1</h2>
-					<h3 id="p1-money">Money: $100</h3>
+					<section class="p-header">
+						<h1 id="p1-name">Player 1</h1>
+						<h1 id="p1-money">Money: $100</h1>
+					</section>
 					<!-- P1 Cards -->
 					<section id="sec-p1-cards" class="p-cards">
 						<img id="p1-c1" src="#">
 						<img id="p1-c2" src="#">
 					</section>
-					<section id="p1-options">
-						<label for="p1-amount">$</label>
-						<input type="number" id="p1-amount" name="p1-amount">
-						</br>
-						<input class="option" type="button" value="Call">
-						<input class="option" type="button" value="Bet">
-						<input class="option" type="button" value="Raise">
-						<input class="option" type="button" value="Fold">
+					<section id="p1-options" class="p-options">
+						<section class="p-amount-input">
+							<label for="p1-amount">$</label>
+							<input type="number" id="p1-amount" name="p1-amount">
+						</section>
+						<section class="options">
+							<input class="option" type="button" value="Call">
+							<input class="option" type="button" value="Bet">
+							<input class="option" type="button" value="Raise">
+							<input class="option" type="button" value="Fold">
+						</section>
 					</section>
 				</section>
 				<!-- Player 2 -->
 				<section id="sec-p2" class="player">
-					<h2 id="p2-name">Player 2</h2>
-					<h3 id="p2-money">Money: $100</h3>
+					<h1 id="p2-name">Player 2</h1>
+					<h1 id="p2-money">Money: $100</h1>
 					<!-- P2 Cards -->
 					<section id="sec-p2-cards" class="p-cards">
 						<img id="p2-c1" src="#">
