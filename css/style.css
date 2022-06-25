@@ -23,6 +23,7 @@
 
 body {
      background: green;
+     font-size: 1.5vw;
 }
 
 #sec-table {
@@ -35,6 +36,7 @@ body {
 
 #sec-game-log {
      border: 1px solid white;
+     background-color: white;
 }
 /******************************************
 /* LAYOUT
@@ -71,6 +73,13 @@ main {
      justify-content: space-between;
 }
 
+.game-info {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     width: 100%;
+}
+
 #sec-players {
      display: flex;
      flex-direction: row;
@@ -82,98 +91,69 @@ main {
      display: flex;
      flex-direction: column;
      align-items: center;
+     width: 100%;
      height: 100%;
 }
 
+.p-header {
+     display: flex;
+     flex-direction: row;
+     align-items:center;
+     justify-content: space-evenly;
+     width: 100%;
+     height: 13.3333%;
+     border: 1px solid pink;
+}
 .p-cards {
      display: flex;
      align-items: center;
-     justify-content: space-around;
+     justify-content: center;
+     width: 100%;
+     height: 53.3333%;
+     border: 1px solid orange
 }
 
 #sec-table-cards img {
-     width: 15%;
+     width: 20%;
      height: auto;
 }
-.player img {
-     width: 25%;
-     height: auto;
+.p-cards img {
+     width: auto;
+     height: 90%;
 }
-
-.option {
+.p-options {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
      width: 100%;
+     height: 33.3333%;
+     border: 1px solid red;  
 }
 
-/* main {
-     display: grid;
-     grid-template-rows: 33.333% 33.333% 33.333%;
-     grid-template-columns: 100%;
+.p-amount-input {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     height: 50%;
+     font-size: 2.0vw;
 }
 
-#sec-table {
-     display: grid;
-     grid-template-rows: 20% 20% 20% 20% 20%;
-     grid-template-columns: 100%;
-     grid-row: 1;
-     grid-column: 1;
+.p-amount-input input{
+     height: 100%;
 }
 
-#sec-players {
-     display: grid;
-     grid-row: 2;
-     grid-column: 1;
+.options {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-evenly;
+     width: 100%;
+     height: 50%;
 }
-
-#sec-game-log {
-     grid-row: 3;
-     grid-column: 1;
+.option {
+     width: 25%;
+     height: 100%;
+     font-size: 2.0vw;
 }
-
-#sec-table-cards {
-     display: grid;
-     grid-row: 1 / 3;
-     grid-column: 1;
-}
-
-#pot {
-     grid-row: 3;
-     grid-column: 1;
-}
-
-#ante {
-     grid-row: 4;
-     grid-column: 1;
-}
-
-#ante {
-     grid-row: 5;
-     grid-column: 1;
-}
-
-#table-c1 {
-     grid-row: 1;
-     grid-column: 2;
-}
-
-#table-c2 {
-     grid-row: 1;
-     grid-column: 3;
-}
-
-#table-c3 {
-     grid-row: 1;
-     grid-column: 4;
-}
-
-#table-c4 {
-     grid-row: 1;
-     grid-column: 5;
-}
-
-#table-c5 {
-     grid-row: 1;
-     grid-column: 6;
-} */
 
 /******************************************
 /* ADDITIONAL STYLES
