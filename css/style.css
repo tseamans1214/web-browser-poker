@@ -23,19 +23,25 @@
 
 body {
      background: green;
-     font-size: 1.5vw;
+     font-size: min(3.0vw, 38px);
+}
+
+h1 {
+     font-size: min(4.0vw, 45px);
+}
+
+h2 {
+     font-size: min(3.0vw, 38px);
 }
 
 #sec-table {
-     border: 1px solid red;
+     
 }
 
 #sec-players {
-     border: 1px solid blue;
 }
 
 #sec-game-log {
-     border: 1px solid white;
      background-color: white;
 }
 /******************************************
@@ -44,7 +50,7 @@ body {
 
 body {
     width: 100%;
-    height: 100vh; 
+    height: 100vh;
 }
 
 main {
@@ -66,18 +72,25 @@ main {
      justify-content: space-around;
 }
 
+header {
+     height: 10%;
+}
 #sec-table-cards {
      display: flex;
      flex-direction: row;
      align-items: center;
      justify-content: space-between;
+     height: 80%;
+     border: 1px solid black;
 }
 
 .game-info {
      display: flex;
      flex-direction: row;
-     justify-content: space-around;
+     justify-content: space-evenly;
      width: 100%;
+     height: 20%;
+     border: 1px solid black;
 }
 
 #sec-players {
@@ -93,6 +106,7 @@ main {
      align-items: center;
      width: 100%;
      height: 100%;
+     border: 1px solid black;
 }
 
 .p-header {
@@ -102,7 +116,9 @@ main {
      justify-content: space-evenly;
      width: 100%;
      height: 13.3333%;
-     border: 1px solid pink;
+}
+.cpu-header {
+     height: 40%;
 }
 .p-cards {
      display: flex;
@@ -110,16 +126,29 @@ main {
      justify-content: center;
      width: 100%;
      height: 53.3333%;
-     border: 1px solid orange
+}
+
+.cpu-cards {
+     height: 60%;
 }
 
 #sec-table-cards img {
-     width: 20%;
+     object-fit: contain;
+     max-width: 20%;
+     max-height: 100%;
+     /* width: 20%;
      height: auto;
+     max-height: 70%; */
 }
 .p-cards img {
-     width: auto;
-     height: 90%;
+     object-fit: contain;
+     max-width: 50%;
+     max-height: 100%;
+     /* width: 20%;
+     height: auto;
+     min-width: 50%;
+     max-width: 50%;
+     max-height: 100%; */
 }
 .p-options {
      display: flex;
@@ -127,7 +156,6 @@ main {
      align-items: center;
      width: 100%;
      height: 33.3333%;
-     border: 1px solid red;  
 }
 
 .p-amount-input {
@@ -152,7 +180,7 @@ main {
 .option {
      width: 25%;
      height: 100%;
-     font-size: 2.0vw;
+     font-size: min(3.0vw, 38px);
 }
 
 /******************************************
