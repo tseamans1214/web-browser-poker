@@ -26,11 +26,23 @@ body {
      font-size: min(3.0vw, 38px);
 }
 
+#game-menu-background {
+     background: rgba(0,0,0, 0.5);
+}
+
+#game-menu {
+     background-color: white;
+}
+
+#start {
+
+}
+
 h1 {
      font-size: min(4.0vw, 45px);
 }
 
-h2 {
+h2, label {
      font-size: min(3.0vw, 38px);
 }
 
@@ -53,6 +65,20 @@ body {
     height: 100vh;
 }
 
+#game-menu-background {
+     width: 100%;
+     height: 100vh;
+     position: absolute;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+#game-menu {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+}
 main {
      width: 100%;
      height: 100%;
@@ -136,19 +162,11 @@ header {
      object-fit: contain;
      max-width: 20%;
      max-height: 100%;
-     /* width: 20%;
-     height: auto;
-     max-height: 70%; */
 }
 .p-cards img {
      object-fit: contain;
      max-width: 50%;
      max-height: 100%;
-     /* width: 20%;
-     height: auto;
-     min-width: 50%;
-     max-width: 50%;
-     max-height: 100%; */
 }
 .p-options {
      display: flex;
@@ -178,7 +196,7 @@ header {
      height: 50%;
 }
 .option {
-     width: 25%;
+     width: 50%;
      height: 100%;
      font-size: min(3.0vw, 38px);
 }

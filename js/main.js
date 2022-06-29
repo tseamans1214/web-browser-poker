@@ -1,3 +1,7 @@
+//document.getElementById("start").addEventListener("click", startGame);
+function startGame() {
+    document.getElementById("game-menu-background").style.display = "none";
+}
 let deckId = "syoupp5yb2o2";
 
 // fetch ('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
