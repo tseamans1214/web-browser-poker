@@ -201,6 +201,11 @@ header {
      font-size: min(3.0vw, 38px);
 }
 
+#sec-game-log {
+     flex-direction: column;
+     overflow: scroll;
+}
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
