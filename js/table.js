@@ -28,8 +28,8 @@ class Table {
         document.getElementById("pot").textContent = 'Pot: $' + this.pot;
     }
 
-    increaseRoundBet(amount) {
-        this.roundBet = this.roundBet + amount;
+    setRoundBet(amount) {
+        this.roundBet = amount;
         document.getElementById("round-bet").textContent = 'Round Bet: $' + this.roundBet;
     }
 
@@ -76,12 +76,12 @@ class Table {
 
     checkPlayersRoundBet() {
         var allPlayersMatch = true;
-        for (var i=0; i<this.players.length; i++) {
-            if (this.players[i].roundBet != this.roundBet) {
-                allPlayersMatch = false;
-                return allPlayersMatch;
-            }
-        }
+        // for (var i=0; i<this.players.length; i++) {
+        //     if (this.players[i].roundBet != this.roundBet) {
+        //         allPlayersMatch = false;
+        //         return allPlayersMatch;
+        //     }
+        // }
         return allPlayersMatch;
     }
 

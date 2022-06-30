@@ -42,9 +42,12 @@ function main() {
 async function p0Bet() {
     var betAmount = Number(document.getElementById("p0-amount").value);
     player1.bet(betAmount);
+    table.setRoundBet(betAmount);
+    table.increasePot(betAmount);
     for (var i=1; i<table.players.length; i++) {
         logGame(`It is ${table.players[i].name}'s turn, How much will you bet or will you fold`);
         table.players[i].bet(betAmount);
+        table.increasePot(betAmount);
     }
     if (table.checkPlayersRoundBet()) {
         round++;
@@ -90,6 +93,7 @@ async function resetRound() {
     var cards =  await deck.drawCards(4);
     player1.setCards([cards[0], cards[1]]);
     player2.setCards([cards[2], cards[3]]);
+    table.collectAnte();
 
 }
 
