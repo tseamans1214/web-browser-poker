@@ -86,6 +86,88 @@ class Table {
     }
 
     calculateWinner() {
+        var winnerHand = 0;
+        var winnderIndex = -1;
+        for (var i=0; i<this.players.length; i++) {
+            for (var j=0; j<this.cards.length; j++) {
+                this.players[i].cards.push(this.cards[j]);
+            }
+            this.players[i].hand = getPlayerHand(this.players[i].cards);
+        }
+
+        for (var i=0; i<this.players.length; i++) {
+            if (this.players[i].hand > winnerHand) {
+                winnerHand = this.players[i].hand;
+                winnderIndex = i;
+            }
+        }
+        return this.players[winnderIndex];
+    }
+    getCardValue(value) {
+        if (value === "ACE") {
+            value = 14;
+        } else if (value === "KING") {
+            return 13
+        } else if (value === "QUEEN") {
+            return 12;
+        } else if (value === "JACK") {
+            return 11;
+        } else {
+            return Number(value);
+        }
+    }
+    getPlayerHand(cards) {
+        if (hasRoyalFlush(cards)) {
+            return 23;
+        } else if (hasStraightFlush(cards)) {
+            return 22;
+        } else if (hasFourOfAKind(cards)) {
+            return 21;
+        } else if (hasFullHouse(cards)) {
+            return 20;
+        } else if (hasFlush(cards)) {
+            return 19;
+        } else if (hasStraight(cards)) {
+            return 18;
+        } else if (hasThreeOfAKind(cards)) {
+            return 17;
+        } else if (hasTwoPair(cards)) {
+            return 16;
+        } else if (hasOnePair(cards)) {
+            return 15;
+        } else {
+            return highCard(cards);
+        } 
+    }
+    // Order of best hands, best to worst
+    hasRoyalFlush(cards) {
+
+    }
+    hasStraightFlush(cards) {
+
+    }
+    hasFourOfAKind(cards) {
+
+    }
+    hasFullHouse(cards) {
+
+    }
+    hasFlush(cards) {
+
+    }
+    hasStraight(cards) {
+
+    }
+    hasThreeOfAKind(cards) {
+
+    }
+    hasTwoPair(cards) {
+
+    }
+    hasOnePair(cards) {
+
+    }
+    highCard(cares) {
 
     }
 }
