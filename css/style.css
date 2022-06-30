@@ -47,7 +47,7 @@ h2, label {
 }
 
 #sec-table {
-     
+
 }
 
 #sec-players {
@@ -107,7 +107,6 @@ header {
      align-items: center;
      justify-content: space-between;
      height: 80%;
-     border: 1px solid black;
 }
 
 .game-info {
@@ -117,6 +116,7 @@ header {
      width: 100%;
      height: 20%;
      border: 1px solid black;
+     border-top: 2px solid black;
 }
 
 #sec-players {
