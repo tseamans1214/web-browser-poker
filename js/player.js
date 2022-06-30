@@ -7,6 +7,7 @@ class Player {
         this.isFolded = false;
         this.roundBet = 0;
         this.cards = [];
+        this.hand = 0;
 
         // Set html elements
         document.getElementById(`p${this.playerNumber}-name`).textContent = this.name;
