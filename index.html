@@ -40,38 +40,38 @@
 			</section>
 			<!-- Players Section -->
 			<section id="sec-players">
-				<!-- Player 1 -->
-				<section id="sec-p1" class="player">
+				<!-- Player 0 -->
+				<section id="sec-p0" class="player">
 					<section class="p-header">
-						<h2 id="p1-name">Player 1</h2>
-						<h2 id="p1-money">Money: $100</h2>
+						<h2 id="p0-name">Player 1</h2>
+						<h2 id="p0-money">Money: $100</h2>
 					</section>
-					<!-- P1 Cards -->
-					<section id="sec-p1-cards" class="p-cards">
-						<img id="p1-c1" src="card-back.png">
-						<img id="p1-c2" src="card-back.png">
+					<!-- P0 Cards -->
+					<section id="sec-p0-cards" class="p-cards">
+						<img id="p0-c1" src="card-back.png">
+						<img id="p0-c2" src="card-back.png">
 					</section>
-					<section id="p1-options" class="p-options">
+					<section id="p0-options" class="p-options">
 						<section class="p-amount-input">
-							<label for="p1-amount">$</label>
-							<input type="number" id="p1-amount" name="p1-amount">
+							<label for="p0-amount">$</label>
+							<input type="number" id="p0-amount" name="p0-amount" onchange="changeButtonText()">
 						</section>
 						<section class="options">
-							<input class="option" type="button" value="Bet" onclick="p1Bet()">
+							<input id="bet" class="option" type="button" value="Bet" onclick="p0Bet()">
 							<input class="option" type="button" value="Fold">
 						</section>
 					</section>
 				</section>
-				<!-- Player 2 -->
-				<section id="sec-p2" class="player">
+				<!-- Player 1 -->
+				<section id="sec-p1" class="player">
 					<section class="p-header cpu-header">
-						<h2 id="p2-name">Player 2</h2>
-						<h2 id="p2-money">Money: $100</h2>
+						<h2 id="p1-name">Player 2</h2>
+						<h2 id="p1-money">Money: $100</h2>
 					</section>
-					<!-- P2 Cards -->
-					<section id="sec-p2-cards" class="p-cards cpu-cards">
-						<img id="p2-c1" src="card-back.png">
-						<img id="p2-c2" src="card-back.png">
+					<!-- p1 Cards -->
+					<section id="sec-p1-cards" class="p-cards cpu-cards">
+						<img id="p1-c1" src="card-back.png">
+						<img id="p1-c2" src="card-back.png">
 					</section>
 				</section>
 			</section>
