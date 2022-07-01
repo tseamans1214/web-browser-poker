@@ -87,87 +87,219 @@ class Table {
 
     calculateWinner() {
         var winnerHand = 0;
-        var winnderIndex = -1;
+        var winnerIndex = -1;
         for (var i=0; i<this.players.length; i++) {
             for (var j=0; j<this.cards.length; j++) {
                 this.players[i].cards.push(this.cards[j]);
             }
-            this.players[i].hand = getPlayerHand(this.players[i].cards);
+            this.players[i].hand = this.getPlayerHand(this.players[i].cards);
+            console.log("Player " + i + " Hand: ");
+            console.log(this.players[i].cards)
+            console.log(this.players[i].hand);
         }
 
         for (var i=0; i<this.players.length; i++) {
             if (this.players[i].hand > winnerHand) {
                 winnerHand = this.players[i].hand;
-                winnderIndex = i;
+                winnerIndex = i;
             }
         }
-        return this.players[winnderIndex];
+        return this.players[winnerIndex];
     }
     getCardValue(value) {
-        if (value === "ACE") {
-            value = 14;
-        } else if (value === "KING") {
-            return 13
-        } else if (value === "QUEEN") {
+        if (value == "ACE") {
+            return 14;
+        } else if (value == "KING") {
+            return 13;
+        } else if (value == "QUEEN") {
             return 12;
-        } else if (value === "JACK") {
+        } else if (value == "JACK") {
             return 11;
         } else {
             return Number(value);
         }
     }
     getPlayerHand(cards) {
-        if (hasRoyalFlush(cards)) {
+        if (this.hasRoyalFlush(cards)) {
             return 23;
-        } else if (hasStraightFlush(cards)) {
+        } else if (this.hasStraightFlush(cards)) {
             return 22;
-        } else if (hasFourOfAKind(cards)) {
+        } else if (this.hasFourOfAKind(cards)) {
             return 21;
-        } else if (hasFullHouse(cards)) {
+        } else if (this.hasFullHouse(cards)) {
             return 20;
-        } else if (hasFlush(cards)) {
+        } else if (this.hasFlush(cards)) {
             return 19;
-        } else if (hasStraight(cards)) {
+        } else if (this.hasStraight(cards)) {
             return 18;
-        } else if (hasThreeOfAKind(cards)) {
+        } else if (this.hasThreeOfAKind(cards)) {
             return 17;
-        } else if (hasTwoPair(cards)) {
+        } else if (this.hasTwoPair(cards)) {
             return 16;
-        } else if (hasOnePair(cards)) {
+        } else if (this.hasOnePair(cards)) {
             return 15;
         } else {
-            return highCard(cards);
+            return this.highCard(cards);
         } 
     }
     // Order of best hands, best to worst
     hasRoyalFlush(cards) {
-
+        var codes = cards.map(x => x.code);
+        if ((codes.includes('0D') && codes.includes('JD') && codes.includes('QD') 
+            && codes.includes('KD') && codes.includes('AD')) ||
+            (codes.includes('0H') && codes.includes('JH') && codes.includes('QH') 
+            && codes.includes('KH') && codes.includes('AH')) ||
+            (codes.includes('0C') && codes.includes('JC') && codes.includes('QC') 
+            && codes.includes('KC') && codes.includes('AC')) ||
+            (codes.includes('0S') && codes.includes('JS') && codes.includes('QS') 
+            && codes.includes('KS') && codes.includes('AS'))) {
+                console.log("Royal Flush: " + codes);
+                return true;
+            } else {
+                return false;
+            }
     }
     hasStraightFlush(cards) {
-
+        var straightCards = this.hasStraight(cards);
+        if (straightCards) {
+            if (this.hasFlush(straightCards)) {
+                return true;
+            }
+        }
+        return false;
     }
     hasFourOfAKind(cards) {
-
+        var values = cards.map(x => x.value);
+        const count = values.reduce((accumulator, value) => {
+            return {...accumulator, [value]: (accumulator[value] || 0) + 1};
+          }, {});
+        if (Object.values(count).includes(4)){
+            console.log("4 of a Kind");
+            return true;
+        }
+        return false;
     }
     hasFullHouse(cards) {
-
+        var values = cards.map(x => x.value);
+        const count = values.reduce((accumulator, value) => {
+            return {...accumulator, [value]: (accumulator[value] || 0) + 1};
+          }, {});
+        if (Object.values(count).includes(3) && Object.values(count).includes(2)){
+            console.log("Full House");
+            return true;
+        }
+        return false;
     }
     hasFlush(cards) {
-
+        var suitCounts = [0,0,0,0];
+        for (var i=0; i<cards.length; i++) {
+            if (cards[i].suit === 'SPADES') {
+                suitCounts[0]++;
+            } else if (cards[i].suit === 'DIAMONDS') {
+                suitCounts[1]++;
+            } else if (cards[i].suit === 'CLUBS') {
+                suitCounts[2]++;
+            } else if (cards[i].suit == 'HEARTS') {
+                suitCounts[3]++;
+            }
+        }
+        if (suitCounts.includes(5)) {
+            console.log("FLUSH");
+            return true;
+        } else {
+            return false;
+        }
     }
     hasStraight(cards) {
-
+        cards.sort(this.compareCards);
+        var straight = [];
+        var count = 0;
+        for (var i=cards.length-1; i>0; i--) {
+              if (this.getCardValue(cards[i].value)-this.getCardValue(cards[i-1].value) === 1) {
+                  count++;
+                  straight.push(cards[i]);
+                  if (count === 4) {
+                    straight.push(cards[i-1]);
+                    break;
+                  }
+              } else {
+                  count = 0;
+                  straight = [];
+              }
+          }
+          if (count === 4) {
+              return straight.sort(this.compareCards);
+          } else {
+              return false;
+          }
     }
     hasThreeOfAKind(cards) {
-
+        var values = cards.map(x => x.value);
+        const count = values.reduce((accumulator, value) => {
+            return {...accumulator, [value]: (accumulator[value] || 0) + 1};
+          }, {});
+        if (Object.values(count).includes(3)){
+            console.log("3 of a Kind");
+            return true;
+        }
+        return false;
     }
     hasTwoPair(cards) {
-
+        var values = cards.map(x => x.value);
+        const count = values.reduce((accumulator, value) => {
+            return {...accumulator, [value]: (accumulator[value] || 0) + 1};
+          }, {});
+        var pairCount = 0;
+        for (var i=0; i<Object.values(count).length; i++) {
+            if (Object.values(count)[i] == 2) {
+                pairCount++;
+            }
+        }
+        if (pairCount == 2) {
+            console.log("Two Pair");
+            return true;
+        }
+        return false;
     }
     hasOnePair(cards) {
-
+        var values = cards.map(x => x.value);
+        const count = values.reduce((accumulator, value) => {
+            return {...accumulator, [value]: (accumulator[value] || 0) + 1};
+          }, {});
+        if (Object.values(count).includes(2)){
+            console.log("One Pair");
+            return true;
+        }
+        return false;
     }
-    highCard(cares) {
+    highCard(cards) {
+        var values = cards.map(x => this.getCardValue(x.value));
+        values.sort();
+        console.log(values);
+        return values[values.length-1];
+    }
+    compareCards(a, b) {
+        if (getCardValue(a.value) < getCardValue(b.value)) {
+          return -1;
+        }
+        if (getCardValue(a.value) > getCardValue(b.value)) {
+          return 1;
+        }
+        // a must be equal to b
+        return 0;
+      }
+}
 
+function getCardValue(value) {
+    if (value == "ACE") {
+        return 14;
+    } else if (value == "KING") {
+        return 13;
+    } else if (value == "QUEEN") {
+        return 12;
+    } else if (value == "JACK") {
+        return 11;
+    } else {
+        return Number(value);
     }
 }
