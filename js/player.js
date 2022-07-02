@@ -7,6 +7,8 @@ class Player {
         this.isFolded = false;
         this.roundBet = 0;
         this.cards = [];
+        this.hand = 0;
+        this.highCard;
 
         // Set html elements
         document.getElementById(`p${this.playerNumber}-name`).textContent = this.name;
@@ -17,6 +19,12 @@ class Player {
     }
     setCards(cards) {
         this.cards = cards;
+        
+        if (getCardValue(this.cards[0].value) > getCardValue(this.cards[1].value)) {
+            this.highCard = getCardValue(this.cards[0].value);
+        } else {
+            this.highCard = getCardValue(this.cards[1].value);
+        }
         document.getElementById(`p${this.playerNumber}-c1`).src = this.cards[0].image;
         document.getElementById(`p${this.playerNumber}-c2`).src = this.cards[1].image;
     }
@@ -44,6 +52,37 @@ class Player {
         this.cards = [];
         document.getElementById(`p${this.playerNumber}-c1`).src = "card-back.png";
         document.getElementById(`p${this.playerNumber}-c2`).src = "card-back.png";
+    }
+    getHand() {
+        if (this.hand === 23) {
+            return "Royal Flush";
+        } else if (this.hand === 22) {
+            return "Straight Flush";
+        } else if (this.hand === 21) {
+            return "Four of a Kind";
+        } else if (this.hand === 20) {
+            return "Full House";
+        } else if (this.hand === 19) {
+            return "Flush";
+        } else if (this.hand === 18) {
+            return "Straight";
+        } else if (this.hand === 17) {
+            return "Three of a Kind";
+        } else if (this.hand === 16) {
+            return "Two Pair";
+        } else if (this.hand === 15) {
+            return "One Pair";
+        } else if (this.hand === 14) {
+            return "High Card: Ace";
+        } else if (this.hand === 13) {
+            return "High Card: King";
+        } else if (this.hand === 12) {
+            return "High Card: Queen";
+        } else if (this.hand === 11) {
+            return "High Card: Jack";
+        } else {
+            return "High Card: " + this.hand;
+        }
     }
 }
 

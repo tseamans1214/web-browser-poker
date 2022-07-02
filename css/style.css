@@ -26,11 +26,11 @@ body {
      font-size: min(3.0vw, 38px);
 }
 
-#game-menu-background {
+#game-menu-background, #win-menu-background {
      background: rgba(0,0,0, 0.5);
 }
 
-#game-menu {
+#game-menu, #win-menu {
      background-color: white;
 }
 
@@ -65,7 +65,7 @@ body {
     height: 100vh;
 }
 
-#game-menu-background {
+#game-menu-background, #win-menu-background {
      width: 100%;
      height: 100vh;
      position: absolute;
@@ -73,11 +73,18 @@ body {
      align-items: center;
      justify-content: center;
 }
-#game-menu {
+#game-menu, #win-menu {
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content: center;
+}
+#start, #play-again {
+     width: 100%;
+     min-height: 75px;
+}
+#win-menu-background {
+     display: none;
 }
 main {
      width: 100%;
