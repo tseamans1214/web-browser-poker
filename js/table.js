@@ -102,6 +102,12 @@ class Table {
             if (this.players[i].hand > winnerHand) {
                 winnerHand = this.players[i].hand;
                 winnerIndex = i;
+            } else if (this.players[i].hand === winnerHand) {
+                if (this.players[i].highCard > this.players[winnerIndex].highCard) {
+                    console.log("Tie! Winner decided by high card");
+                    winnerHand = this.players[i].hand;
+                    winnerIndex = i;
+                }
             }
         }
         return this.players[winnerIndex];
