@@ -19,7 +19,6 @@
 				<h1>Welcome to Web Browser Poker!</h1>
 				<h2>Created by Tommy Seamans</h2>
 				<input id="start" type="button" value="Start!" onclick="startGame()">
-				<!-- <p id="start"> Start</p> -->
 			</section>
 		</section>
 		<main>
@@ -78,6 +77,14 @@
 			</section>
 			<!-- Game Log Section -->
 			<section id="sec-game-log"></section>
+			<!-- Win Screen -->
+			<section id="win-menu-background">
+				<section id="win-menu">
+					<h1 id="winner-line"></h1>
+					<h2 id="win-amount"></h2>
+					<input id="play-again" type="button" value="Play Again?" onclick="resetRound()">
+				</section>
+			</section>
 		</main>
 		
 		<script type="text/javascript" src="js/card.js"></script>
