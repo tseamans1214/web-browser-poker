@@ -92,7 +92,7 @@ class Table {
             for (var j=0; j<this.cards.length; j++) {
                 this.players[i].cards.push(this.cards[j]);
             }
-            this.players[i].hand = this.getPlayerHand(this.players[i].cards);
+            this.players[i].hand = this.getPlayerHand(this.players[i]);
             console.log("Player " + i + " Hand: ");
             console.log(this.players[i].cards)
             console.log(this.players[i].hand);
@@ -103,7 +103,7 @@ class Table {
                 winnerHand = this.players[i].hand;
                 winnerIndex = i;
             } else if (this.players[i].hand === winnerHand) {
-                if (this.players[i].highCard > this.players[winnerIndex].highCard) {
+                if (getCardValue(this.players[i].highCard.value) > getCardValue(this.players[winnerIndex].highCard.value)) {
                     console.log("Tie! Winner decided by high card");
                     winnerHand = this.players[i].hand;
                     winnerIndex = i;
@@ -125,27 +125,28 @@ class Table {
             return Number(value);
         }
     }
-    getPlayerHand(cards) {
-        if (this.hasRoyalFlush(cards)) {
+    getPlayerHand(player) {
+        if (this.hasRoyalFlush(player.cards)) {
             return 23;
-        } else if (this.hasStraightFlush(cards)) {
+        } else if (this.hasStraightFlush(player.cards)) {
             return 22;
-        } else if (this.hasFourOfAKind(cards)) {
+        } else if (this.hasFourOfAKind(player.cards)) {
             return 21;
-        } else if (this.hasFullHouse(cards)) {
+        } else if (this.hasFullHouse(player.cards)) {
             return 20;
-        } else if (this.hasFlush(cards)) {
+        } else if (this.hasFlush(player.cards)) {
             return 19;
-        } else if (this.hasStraight(cards)) {
+        } else if (this.hasStraight(player.cards)) {
             return 18;
-        } else if (this.hasThreeOfAKind(cards)) {
+        } else if (this.hasThreeOfAKind(player.cards)) {
             return 17;
-        } else if (this.hasTwoPair(cards)) {
+        } else if (this.hasTwoPair(player.cards)) {
             return 16;
-        } else if (this.hasOnePair(cards)) {
+        } else if (this.hasOnePair(player.cards)) {
             return 15;
         } else {
-            return this.highCard(cards);
+            return getCardValue(player.highCard.value);
+            //return this.highCard(cards);
         } 
     }
     // Order of best hands, best to worst
