@@ -21,9 +21,9 @@ class Player {
         this.cards = cards;
         
         if (getCardValue(this.cards[0].value) > getCardValue(this.cards[1].value)) {
-            this.highCard = this.cards[0];
+            this.highCard = this.cards[0].value;
         } else {
-            this.highCard = this.cards[1];
+            this.highCard = this.cards[1].value;
         }
         document.getElementById(`p${this.playerNumber}-c1`).src = this.cards[0].image;
         document.getElementById(`p${this.playerNumber}-c2`).src = this.cards[1].image;
@@ -81,7 +81,7 @@ class Player {
         } else if (this.hand === 11) {
             return "High Card: Jack";
         } else {
-            return "High Card: " + this.highCard.value;
+            return "High Card: " + this.highCard;
         }
     }
 }
