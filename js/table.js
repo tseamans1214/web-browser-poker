@@ -103,7 +103,7 @@ class Table {
                 winnerHand = this.players[i].hand;
                 winnerIndex = i;
             } else if (this.players[i].hand === winnerHand) {
-                if (getCardValue(this.players[i].highCard.value) > getCardValue(this.players[winnerIndex].highCard.value)) {
+                if (getCardValue(this.players[i].highCard) > getCardValue(this.players[winnerIndex].highCard)) {
                     console.log("Tie! Winner decided by high card");
                     winnerHand = this.players[i].hand;
                     winnerIndex = i;
@@ -145,7 +145,7 @@ class Table {
         } else if (this.hasOnePair(player.cards)) {
             return 15;
         } else {
-            return getCardValue(player.highCard.value);
+            return getCardValue(player.highCard);
             //return this.highCard(cards);
         } 
     }
