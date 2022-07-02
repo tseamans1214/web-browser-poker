@@ -60,11 +60,17 @@ async function p0Bet() {
         cards = await deck.drawCards(1);
         table.addCards(cards);
     } else {
-        table.calculateWinner();
-        resetRound();
+        var winner = table.calculateWinner();
+        winner.money += table.pot;
+        document.getElementById('win-menu-background').style.display = "flex";
+        document.getElementById('winner-line').textContent = winner.name + " won with a " + winner.getHand() + "!";
+        document.getElementById('win-amount').textContent = winner.name + " won $" + table.pot; 
+        //alert(winner.name + " won with a " + winner.getHand());
     }
-    logGame("Round: " + round);
-    logGame(`It is ${player1.name}'s turn, How much will you bet or will you fold`);
+    if (round < 5) {
+        logGame("Round: " + round);
+        logGame(`It is ${player1.name}'s turn, How much will you bet or will you fold`);
+    }
 }
 function logGame(message) {
     const newLog = document.createElement("p"); 
@@ -86,6 +92,7 @@ function changeButtonText() {
 }
 
 async function resetRound() {
+    document.getElementById('win-menu-background').style.display = "none";
     round = 1;
     document.getElementById('sec-game-log').innerHTML = "";
     table.resetTable();
