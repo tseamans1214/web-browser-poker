@@ -17,30 +17,11 @@ async function startGame() {
     player1.setCards([cards[0], cards[1]]);
     player2.setCards([cards[2], cards[3]]);
     round = 1;
-    await logGame("Welcome to Web Browser Poker! Enjoy you match!");
+    await logGame("Welcome to Web Browser Poker! Have fun!");
     await table.collectAnte();
-    await logGame(`It is ${player1.name}'s turn, How much will you bet or will you fold`);
+    await logGame(`It is ${player1.name}'s turn. Will you check, bet, or fold?`);
     document.getElementById("bet").disabled = false;
     document.getElementById("fold").disabled = false;
-}
-
-function main() {
-    // while (true) {
-    //     if (round == 1) {
-    //         do {
-    //             for (var i=0; table.players.length; i++) {
-    //                 logGame(`It is ${table.players[i].name}'s turn, How much will you bet or will you fold`);
-    //                 if (i === 0) {
-    //                     player1Turn = true;
-    //                 }
-    //                 //while (player1Turn === true);
-    //                 if (i !== 0) {
-    //                     table.players[i].bet(10);
-    //                 }
-    //             }
-    //         } while (table.checkPlayersRoundBet() === false);
-    //     }
-    // }
 }
 
 async function p0Bet() {
@@ -65,7 +46,7 @@ async function p0Bet() {
             table.setRoundBet(player1.roundBet);
             cpuRaise = false;
             for (var i=1; i<table.players.length; i++) {
-                await logGame(`It is ${table.players[i].name}'s turn. How much will you bet or will you fold`);
+                await logGame(`It is ${table.players[i].name}'s turn. Will they bet or fold?`);
                 var cpuBet = await table.players[i].choice(table.roundBet-table.players[i].roundBet);
                 if (table.players[i].isFolded == false) {
                     table.increasePot(cpuBet);
@@ -105,10 +86,10 @@ async function p0Bet() {
         }
         if (round < 5) {
             await logGame("Round: " + round);
-            await logGame(`It is ${player1.name}'s turn. How much will you bet or will you fold`);
+            await logGame(`It is ${player1.name}'s turn. Will you check, bet, or fold?`);
         }
     } else {
-        await logGame(`It is ${player1.name}'s turn. The round bet was raised to ${table.roundBet}, will you call, raise, or fold?`);
+        await logGame(`It is ${player1.name}'s turn. The round bet was raised to $${table.roundBet}. Will you call, raise, or fold?`);
         document.getElementById("p0-amount").value = table.roundBet - player1.roundBet;
     }
     console.log("Table Round Bet: " + table.roundBet);
@@ -166,7 +147,7 @@ async function resetRound() {
     player2.setCards([cards[2], cards[3]]);
     table.collectAnte();
     await logGame("Round: " + round);
-    await logGame(`It is ${player1.name}'s turn. How much will you bet or will you fold`);
+    await logGame(`It is ${player1.name}'s turn. Will you check, bet, or fold?`);
     document.getElementById("bet").disabled = false;
     document.getElementById("fold").disabled = false;
 }
