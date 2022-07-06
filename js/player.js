@@ -28,11 +28,11 @@ class Player {
         document.getElementById(`p${this.playerNumber}-c1`).src = this.cards[0].image;
         document.getElementById(`p${this.playerNumber}-c2`).src = this.cards[1].image;
     }
-    bet(betAmount) {
+    async bet(betAmount) {
         this.money = this.money - betAmount;
         this.roundBet = this.roundBet + betAmount;
         document.getElementById(`p${this.playerNumber}-money`).textContent = '$' + this.money;
-        logGame(`${this.name} bets $${betAmount}!`);
+        await logGame(`${this.name} bets $${betAmount}!`);
         return betAmount;
     }
     subtractMoney(amount) {
@@ -40,16 +40,18 @@ class Player {
         document.getElementById(`p${this.playerNumber}-money`).textContent = '$' + this.money;
         return amount;
     }
-    fold() {
+    async fold() {
         this.isFolded = true;
-        cards = [];
+        this.cards = [];
         document.getElementById(`p${this.playerNumber}-c1`).src = "card-back.png";
         document.getElementById(`p${this.playerNumber}-c2`).src = "card-back.png";
+        await logGame(`${this.name} folds!`);
     }
     resetPlayer() {
         this.isFolded = false;
         this.roundBet = 0;
         this.cards = [];
+        this.hand = 0;
         document.getElementById(`p${this.playerNumber}-c1`).src = "card-back.png";
         document.getElementById(`p${this.playerNumber}-c2`).src = "card-back.png";
     }
@@ -91,12 +93,36 @@ class CPU extends Player {
         super(name, money, playerNumber);
         this.difficulty = difficulty;
     }
-    choice() {
-        var pick = Math.random;
-        if (pick <= .5) {
-            this.bet(1);
+    async choice(betAmount) {
+        var pick = Math.random();
+        //console.log(pick);
+        if (pick <= .9) {
+            pick = Math.random(); {
+                if (pick > .5) {
+                    await this.bet(betAmount);
+                } else {
+                    betAmount += 100;
+                    await this.bet(betAmount);
+                }
+            }
+            return betAmount;
         } else {
-            this.fold();
+            await this.fold();
         }
+    }
+    
+    setCards(cards) {
+        this.cards = cards;
+        
+        if (getCardValue(this.cards[0].value) > getCardValue(this.cards[1].value)) {
+            this.highCard = this.cards[0].value;
+        } else {
+            this.highCard = this.cards[1].value;
+        }
+        
+    }
+    revealCards() {
+        document.getElementById(`p${this.playerNumber}-c1`).src = this.cards[0].image;
+        document.getElementById(`p${this.playerNumber}-c2`).src = this.cards[1].image;
     }
 }
