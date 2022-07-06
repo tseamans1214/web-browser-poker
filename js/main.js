@@ -45,7 +45,7 @@ async function p0Bet() {
     table.setRoundBet(betAmount);
     table.increasePot(betAmount);
     for (var i=1; i<table.players.length; i++) {
-        logGame(`It is ${table.players[i].name}'s turn, How much will you bet or will you fold`);
+        logGame(`It is ${table.players[i].name}'s turn. How much will you bet or will you fold`);
         table.players[i].bet(betAmount);
         table.increasePot(betAmount);
     }
@@ -69,8 +69,18 @@ async function p0Bet() {
     }
     if (round < 5) {
         logGame("Round: " + round);
-        logGame(`It is ${player1.name}'s turn, How much will you bet or will you fold`);
+        logGame(`It is ${player1.name}'s turn. How much will you bet or will you fold`);
     }
+}
+
+function p0Fold() {
+    player1.isFolded = true;
+    var winner = player2;
+    winner.money += table.pot;
+    document.getElementById('win-menu-background').style.display = "flex";
+    document.getElementById('winner-line').textContent = winner.name + " won because all other players folded!";
+    document.getElementById('win-amount').textContent = winner.name + " won $" + table.pot;
+
 }
 function logGame(message) {
     const newLog = document.createElement("p"); 
@@ -92,6 +102,8 @@ function changeButtonText() {
 }
 
 async function resetRound() {
+    player1.isFolded = false;
+    player2.isFolded = false;
     document.getElementById('win-menu-background').style.display = "none";
     round = 1;
     document.getElementById('sec-game-log').innerHTML = "";
@@ -101,6 +113,8 @@ async function resetRound() {
     player1.setCards([cards[0], cards[1]]);
     player2.setCards([cards[2], cards[3]]);
     table.collectAnte();
+    logGame("Round: " + round);
+    logGame(`It is ${player1.name}'s turn. How much will you bet or will you fold`);
 
 }
 
