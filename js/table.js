@@ -66,8 +66,8 @@ class Table {
         }
     }
 
-    collectAnte() {
-        logGame(`The ante for this round is $${this.ante}`);
+    async collectAnte() {
+        await logGame(`The ante for this round is $${this.ante}`);
         for (var i=0; i<this.players.length; i++) {
             this.pot += this.players[i].subtractMoney(this.ante);
         }
@@ -76,13 +76,24 @@ class Table {
 
     checkPlayersRoundBet() {
         var allPlayersMatch = true;
-        // for (var i=0; i<this.players.length; i++) {
-        //     if (this.players[i].roundBet != this.roundBet) {
-        //         allPlayersMatch = false;
-        //         return allPlayersMatch;
-        //     }
-        // }
+        for (var i=0; i<this.players.length; i++) {
+            if (this.players[i].roundBet != this.roundBet) {
+                allPlayersMatch = false;
+                return allPlayersMatch;
+            }
+        }
         return allPlayersMatch;
+    }
+
+    checkPlayersPlaying() {
+        var stillPlaying = false;
+        for (let i=1; i<this.players.length; i++) {
+            if (this.players[i].isFolded == false) {
+                stillPlaying = true;
+                return stillPlaying;
+            }
+        }
+        return stillPlaying;
     }
 
     calculateWinner() {
