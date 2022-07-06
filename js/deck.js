@@ -2,7 +2,6 @@ class Deck {
     constructor() {
         this.deckId = "";
         this.getDeckId(); 
-        console.log("hello " + this.deckId);
     }
     async getDeckId() {
         await fetch ('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
