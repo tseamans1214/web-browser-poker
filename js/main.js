@@ -10,7 +10,7 @@ async function startGame() {
     document.getElementById("fold").disabled = true;
     document.getElementById("game-menu-background").style.display = "none";
     deck.shuffle();
-    player1 = new Player("Tommy", 2000, 0);
+    player1 = new Player("You", 2000, 0);
     player2 = new CPU("CPU1", 2000, 1, "easy");
     table = new Table(100, [player1, player2]);
     var cards =  await deck.drawCards(4);
