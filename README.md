@@ -1,5 +1,5 @@
 # web-browser-poker
-Free web browser poker game you can play
+Free web browser poker game you can play here! https://web-browser-poker.netlify.app
 
 You are given money to play with and you may bet any amount (even more than you have at the moment)
 
